@@ -12,23 +12,14 @@ Vagrant.configure("2") do |config|
         master.vagrant_vagrantfile = "../vagrant-docker-simple/DockerHostVagrantfile" 
     end
     m.vm.hostname  = "my.host"
-    #m.ssh.username = "root"
-    #m.ssh.password = "root123"
-    #m.vm.synced_folder "./keys" , "/vagrant"
     m.vm.synced_folder "files", "/u01/files"
     m.vm.synced_folder "puppet", "/u01/puppet"
-
-#        m.vm.provision  "puppet" do |master|
-#                master.manifests_path = "manifests"
-#                master.module_path = "modules"
-#                master.manifest_file  = "base.pp"
-#     end
   end
 
   config.vm.define "my-complete-container" do |m|
   
     m.vm.provider "docker" do |master|
-        master.image = "me/myimage:version1"
+        master.image = "me/my-image:version1"
 		master.cmd=["ping", "-c 551", "127.0.0.1"] 		
 	    master.name = 'my-complete-container'
         master.vagrant_machine = "dockerhostvm"
@@ -52,4 +43,4 @@ end
 # docker commit containerId  me/my-image:version1
 # vagrant up my-complete-container
  
- 
+ # vagrant docker-run my-complete-container -t -- bash
