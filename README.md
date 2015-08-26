@@ -4,7 +4,7 @@ Example of using Vagrant to provide Docker (host plus container) and subsequentl
 This can be useful when:
 * the Dockerfile becomes very complex 
 * Puppet is your preferred tool for configuring(certain aspects of)  environments
-* you want to make use of large files and/or intermediate files that you want not to be included in the layers underneath your container (or image)
+* during the container build process you want to make use of large files and/or intermediate files that you want not to be included in the layers underneath your container (or image)
 
 The steps are:
 
